@@ -1,0 +1,39 @@
+Plawan Kumar Rath
+
+I have written 3 java files, WordCount, WordCountInMapper and CoOccuranceFrequency
+
+For Part 1, I ran the commands as follows :
+
+First I ran WordCount with regular combiner and recorded the running times on all 6 files:
+
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar WordCount hdfs://cshadoop1/user/pkr140030 
+Time taken to run on hdfs://cshadoop1/user/pkr140030/ArtOfWar.txt file is 18594ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/DevilsDictionary.txt file is 16657ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/Encyclopedia.txt file is 16860ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/NotebookOfLDV.txt file is 18714ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/OutlineOfScience.txt file is 17596ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/SherlockHolmes.txt file is 16583ms
+
+Then I ran the WordCount with InMapper combiner and recorded the running times on all 6 files:
+
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar WordCountInMapper hdfs://cshadoop1/user/pkr140030 
+Time taken to run on hdfs://cshadoop1/user/pkr140030/ArtOfWar.txt file is 18594ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/DevilsDictionary.txt file is 15664ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/Encyclopedia.txt file is 16637ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/NotebookOfLDV.txt file is 16601ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/OutlineOfScience.txt file is 17633ms
+Time taken to run on hdfs://cshadoop1/user/pkr140030/SherlockHolmes.txt file is 17617ms
+
+Clearly, we can see that although the time taken is more or less same, yet the one with In Mapper combiner gives slightly better running time or runs slightly faster than the one with regular combiner.
+
+
+
+For Part 2, I wrote the CoOccuranceFrequency class. A point to be noted is that since, we need to ignore stop_words all the time, it was not necessary to pass a file containing stop words. Instead I create and instantiate a hashSet with the stop words to be ignored. The only additional parameter apart from source and destination, that is required by the program is the length parameter.
+I ran the following commands on all 6 files in HDFS to get Co Occurance frequencies of the 6 files.
+
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar CoOccuranceFrequency hdfs://cshadoop1/user/pkr140030/ArtOfWar.txt hdfs://cshadoop1/user/pkr140030/CoOFAow -length 5
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar CoOccuranceFrequency hdfs://cshadoop1/user/pkr140030/DevilsDictionary.txt hdfs://cshadoop1/user/pkr140030/DevilsDictionaryCoOF -length 6
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar CoOccuranceFrequency hdfs://cshadoop1/user/pkr140030/Encyclopedia.txt hdfs://cshadoop1/user/pkr140030/EncyclopediaCoOF -length 4
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar CoOccuranceFrequency hdfs://cshadoop1/user/pkr140030/OutlineOfScience.txt hdfs://cshadoop1/user/pkr140030/OutlineOfScienceCoOF -length 4
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar CoOccuranceFrequency hdfs://cshadoop1/user/pkr140030/NotebookOfLDV.txt hdfs://cshadoop1/user/pkr140030/NotebookOfLDVCoOF -length 5
+hadoop jar InMappers-1.0-SNAPSHOT-jar-with-dependencies.jar CoOccuranceFrequency hdfs://cshadoop1/user/pkr140030/SherlockHolmes.txt hdfs://cshadoop1/user/pkr140030/SherlockHolmesCoOF -length 7

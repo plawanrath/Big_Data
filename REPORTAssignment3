@@ -1,0 +1,25 @@
+Assignment 3
+Plawan Kumar Rath
+
+The files are ordered as follows:
+
+Q1 - YelpDataAnalysis.java is the main file needs to be run as
+hadoop jar YelpAnalysis-jar-with-dependencies.jar YelpDataAnalysis hdfs://cshadoop1/user/pkr140030/business.csv hdfs://cshadoop1/user/pkr140030/A4Q1
+
+Q2 - RestaurantAnalysis.java is the main file and needs to be run as
+hadoop jar YelpAnalysis-jar-with-dependencies.jar RestaurantAnalysis hdfs://cshadoop1/user/pkr140030/business.csv hdfs://cshadoop1/user/pkr140030/A4Q2
+
+Q3 - Top10RestaurantZip.java is the main class needs to be run as
+hadoop jar YelpAnalysis-jar-with-dependencies.jar Top10RestaurantZip hdfs://cshadoop1/user/pkr140030/business.csv hdfs://cshadoop1/user/pkr140030/A4Q3
+
+Q4 - Top10Tweets.java is the main file needs to be run as:
+hadoop jar YelpAnalysis-jar-with-dependencies.jar Top10Tweets NFL /home/004/p/pk/pkr140030/hdfs_tmp hdfs://cshadoop1/user/pkr140030
+**Incase the twitter API throw an error, it would be if the number of queries to the twitter API exceeds the max limit. There is a max number of queries that can be made to the twitter API every 15mins. If the number of queries exceed that max limit then the API will throw an error. In which case you will have to waitfor 15minutes before running the code again. If the error repeats, then you could simply go into the file and reduce the number of tweets to be requested. (Shouldn't happen though!! Of all the times I ran the code, the API thew error only once..So its a minor chance)
+
+Q5 - Top10BusinessRating.java is the main file needs to run as:
+hadoop jar YelpAnalysis-jar-with-dependencies.jar Top10BusinessRating hdfs://cshadoop1/user/pkr140030/review.csv hdfs://cshadoop1/user/pkr140030/A4Q5
+
+***Please note that to find the average, I Map business id as key and ratings as values, then in the reduce phase I do a sum of the ratings and simultaneously maintain a count. Then I divide them to get the averate rating and store it in Map. 
+
+Q6 - LowestAverageRatings.java is the main file needs to be run as:
+hadoop jar YelpAnalysis-jar-with-dependencies.jar LowestAverageRatings hdfs://cshadoop1/user/pkr140030/review.csv hdfs://cshadoop1/user/pkr140030/A4Q6

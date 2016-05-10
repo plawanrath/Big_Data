@@ -1,0 +1,28 @@
+Plawan Kumar Rath
+Assignment 2
+
+For the assignment 2, I used the twitter4j library and created a class to extract twitter feed using my access key in twitter. 
+I have generated an Access Key using my own account and have hard coded in the key in the project. I will keep the Key active until the homework is graded, so that the code can be run.
+
+The project is set up to take first 500 tweets each for a given search text between Febuary 3rd to February 9th. It will create a file with the name notation <search-Text><Date>.txt to store tweets, then it will upload that file into HDFS and run Map Reduce to find HashTags. The MapReduce will create directories with the notation Trends<Data>.
+
+The jar expects 3 arguments
+
+Argument 1: search text
+Argument 2: temp path (where the files with raw tweets are stored)
+Argument 3: HDFS path.
+
+For my execution, I ran the following command:
+
+hadoop jar TweetDataGenerator-jar-with-dependencies.jar TweetDataGenerator NFL /home/004/p/pk/pkr140030/hdfs_tmp hdfs://cshadoop1/user/pkr140030
+
+This will find tweets that have NFL as search text between Feb 3rd and 9th Feb and will jave HashTags stored in file within directories in HDFS with the notation given above.
+
+After runnning this command, I have copied the result files from HDFS into local and have attached them in the solution zip.
+
+So the solution contains, my java files and 6 txt files containing HashTags of 6 days between Feb 3rd to Feb 9th.
+
+The HashTags folder contains txt files with HashTags (copied from HDFS after MapReduce)
+TweetAnalysis - Project folder
+
+*****Please note that in the target folder, there will be 2 jar files, the one named "TweetDataGenerator-jar-with-dependencies.jar" needs to be run. If you run the other one, it will not work.(This is because the other jar doesn't have the necessary dependencies copied in it)*****
